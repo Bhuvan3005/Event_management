@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { API_URL } from "../config.js";
 
 const EditEvent = () => {
   const { id } = useParams();
@@ -21,7 +20,7 @@ const EditEvent = () => {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const res = await fetch(`${API_URL}/api/events/${id}`);
+        const res = await fetch(`http://localhost:5000/api/events/${id}`);
         const data = await res.json();
 
         if (data) {
@@ -60,7 +59,7 @@ const EditEvent = () => {
       const token = localStorage.getItem("token");
 
       const res = await fetch(
-        `${API_URL}/api/events/${id}`,
+        `http://localhost:5000/api/events/${id}`,
         {
           method: "PUT",
           headers: {
