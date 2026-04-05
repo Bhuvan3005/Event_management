@@ -1,7 +1,7 @@
 import "./Signup.css"
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { API_URL } from "../../config.js";
+import { API_URL } from "../config.js";
 const Signup= ()=>{
     const navigate= useNavigate();
     const handleSignUp=async(e)=>{
