@@ -5,7 +5,7 @@
     import timeLogo from "../../assets/clock.png";
     import venueLogo from "../../assets/location.png";
     
-    import { API_URL } from "../config.js";
+    import { API_URL } from "../../config.js";
     let Details= (props)=>{
         const [selected, setSelected] = useState(null)
         const {id}=useParams();
