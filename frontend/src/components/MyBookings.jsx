@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { API_URL } from "../config.js";
 
 const MyBookings = () => {
   const [bookings, setBookings] = useState([]);
@@ -12,7 +13,7 @@ const MyBookings = () => {
     const fetchBookings = async () => {
       try {
         const res = await fetch(
-          `http://localhost:5000/api/bookings/user/${userId}`
+          `${API_URL}/api/bookings/user/${userId}`
         );
 
         const data = await res.json();
@@ -30,7 +31,7 @@ const MyBookings = () => {
     if (!window.confirm("Are you sure you want to cancel this booking?")) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/api/bookings/${bookingId}`, {
+      const res = await fetch(`${API_URL}/api/bookings/${bookingId}`, {
         method: "DELETE",
       });
 

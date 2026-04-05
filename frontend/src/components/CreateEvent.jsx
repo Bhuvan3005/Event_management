@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "../config.js";
 const CreateEvent = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState({
@@ -33,7 +34,7 @@ const handleSubmit = async (e) => {
     }
 
     const response = await fetch(
-      "http://localhost:5000/api/events/create",
+      `${API_URL}/api/events/create`,
       {
         method: "POST",
         headers: {

@@ -1,6 +1,7 @@
 import "./Signup.css"
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "../config.js";
 const Signup= ()=>{
     const navigate= useNavigate();
     const handleSignUp=async(e)=>{
@@ -10,7 +11,7 @@ const Signup= ()=>{
         const role=document.getElementById("role").value;
         const password=document.getElementById("pass").value;
         try{
-            const response=await fetch("http://localhost:5000/api/auth/signup",{
+            const response=await fetch(`${API_URL}/api/auth/signup`,{
                 method: "POST",
                 headers:{
                     "Content-Type": "application/json"

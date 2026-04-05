@@ -5,6 +5,7 @@
     import timeLogo from "../../assets/clock.png";
     import venueLogo from "../../assets/location.png";
     
+    import { API_URL } from "../config.js";
     let Details= (props)=>{
         const [selected, setSelected] = useState(null)
         const {id}=useParams();
@@ -43,7 +44,7 @@
         const validateCoupon = async () => {
           if (!couponCode) return;
           try {
-            const res = await fetch("http://localhost:5000/api/coupons/validate", {
+            const res = await fetch(`${API_URL}/api/coupons/validate`, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ code: couponCode, totalAmount: totalBeforeDiscount })
@@ -73,7 +74,7 @@
             }
 
             // Using relative URL or localhost for now as Render URL might be stale
-            const res = await fetch("http://localhost:5000/api/bookings", {
+            const res = await fetch(`${API_URL}/api/bookings`, {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -103,7 +104,7 @@
 
         const fetchReviews = async () => {
           try {
-            const res = await fetch(`http://localhost:5000/api/reviews/${id}`);
+            const res = await fetch(`${API_URL}/api/reviews/${id}`);
             const data = await res.json();
             if (res.ok) setReviews(data);
           } catch (err) {
@@ -119,7 +120,7 @@
             return;
           }
           try {
-            const res = await fetch("http://localhost:5000/api/reviews", {
+            const res = await fetch(`${API_URL}/api/reviews`, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ event_id: id, user_id: user.id, rating, review_text: reviewText })
@@ -139,7 +140,7 @@
         useEffect(() => {
           const fetchEvent = async () => {
             try {
-              const res = await fetch(`http://localhost:5000/api/events/${id}`);
+              const res = await fetch(`${API_URL}/api/events/${id}`);
               const data = await res.json();
               setSelected(data);
             } catch (err) {

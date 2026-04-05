@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Cards from "./Cards";
 import SectionBar from "./SectionBar";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "../config.js";
 
 const DashBoard = () => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const DashBoard = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/events");
+        const res = await fetch(`${API_URL}/api/events`);
         const data = await res.json();
 
         setEvents(data);
@@ -44,7 +45,7 @@ const DashBoard = () => {
     const fetchBookings = async () => {
       try {
         const res = await fetch(
-          `http://localhost:5000/api/bookings/user/${userId}`,
+          `${API_URL}/api/bookings/user/${userId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
